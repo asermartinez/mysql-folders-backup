@@ -29,14 +29,14 @@ import datetime
 import tarfile
 import glob2
 
-message_start = " Starting ".center(80, '=')
-message_end = " End ".center(80, '=')
-
-backup_dir = "/home/aser/www/backups"
-
+# *** CONFIGURE ***
+backup_dir = "/home/aser/www/backups"  # Set the destination for backups.
 db_name = '/home/aser/dbname.txt'  # file with databases names, one per line.
 folder_name = '/home/aser/foldername.txt'  # file with folders to backup, one per line.
+# *** END ***
 
+message_start = " Starting ".center(80, '=')
+message_end = " End ".center(80, '=')
 
 def make_tarfile(output_filename, source_dir):
     """

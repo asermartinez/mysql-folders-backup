@@ -14,9 +14,9 @@
 ##### Requirements: 
  `pip3 install glob2`
 
-#####(Optional) To upload the files to Dropbox:
+##### Optional: to upload the files to Dropbox:
 
-Install [dropbox_uploader.sh](https://github.com/andreafabrizi/Dropbox-Uploader)
+* Install [dropbox_uploader.sh](https://github.com/andreafabrizi/Dropbox-Uploader)
 
 ##### Configure
 

@@ -42,3 +42,31 @@
 
         password=pass
 
+Execute:
+
+        chmod +x backup.py
+        
+        ./backup.py
+        
+        Databases file and Folders file found...
+        .../home/aser/dbname.txt...
+        .../home/aser/foldername.txt...
+        
+        =================================== Starting ===================================
+        
+        -------------------------------- Mysql dump... ---------------------------------
+        
+        Backup File created: /home/aser/www/backups/db1-2018-04-17.sql.bz2
+        
+        Backup File created: /home/aser/www/backups/db2-2018-04-17.sql.bz2
+        
+        ---------------------------- Back up of folders... -----------------------------
+        
+        Backup File created: /home/aser/www/backups/folder1-2018-04-17.tar.bz2
+        
+        Backup File created: /home/aser/www/backups/folder2-2018-04-17.tar.bz2
+        
+        
+        dropbox_uploader.sh not found.
+        
+        ===================================== End ======================================

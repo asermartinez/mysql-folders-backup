@@ -22,6 +22,8 @@ folder_name = "/home/aser/foldername.txt"  # File with folders to backup, one pe
 message_start = " Starting ".center(80, "=")
 message_end = " End ".center(80, "=")
 
+backup_dir = os.path.normpath(backup_dir)  # Normalize path, eliminating double slashes, etc.
+
 
 def make_tarfile(output_filename, source_dir):
     """
@@ -59,7 +61,8 @@ def backup_folder():
     with open(folder_name) as directory_list_file:
         folder_list = directory_list_file.readlines()
         for folder in folder_list:
-            folder = folder.rstrip('\n')  # deletes white space or new line character at the end of line
+            folder = folder.rstrip()  # deletes white space or new line character at the end of line
+            folder = os.path.normpath(folder) # Normalize path, eliminating double slashes, etc.
             os.chdir(backup_dir)
             tar_name = os.path.basename(folder) + "-" + datetime.datetime.now().strftime("%Y-%m-%d") + ".tar.bz2"
             make_tarfile(tar_name, folder)

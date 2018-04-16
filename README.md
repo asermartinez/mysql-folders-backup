@@ -1,11 +1,24 @@
-# mysql-folders-backup
+### mysql-folders-backup
+
+##### https://github.com/asermartinez/mysql-folders-backup
+##### Version 1.0
+##### 04-2018
 
  Python script to backup multiple mysql databases and folders.
  to use with my drupal / wordpress sites
 
  Tested with Python 3.6.3
 
- Requirement: Glob2 => pip3 install glob2
+##### Requirements: 
+ Glob2 => pip3 install glob2
+
+ ######(Optional) To upload the files to Dropbox:
+ 
+ install dropbox_uploader.sh from:
+
+ https://github.com/andreafabrizi/Dropbox-Uploader
+
+##### Configure
 
  Create dbname.txt with a database name per line
 
@@ -23,11 +36,7 @@
 
  password=pass
 
- Uploads files to Dropbox with dropbox_uploader.sh :
-
- https://github.com/andreafabrizi/Dropbox-Uploader
-
- Scripts for reference:
+##### Scripts for reference:
 
  bash 
  https://tecadmin.net/python-script-for-mysql-database-backup/

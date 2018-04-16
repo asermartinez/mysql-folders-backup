@@ -27,7 +27,6 @@ import shlex
 import subprocess
 import datetime
 import tarfile
-import shutil
 import glob2
 
 message_start = " Starting ".center(80, '=')
@@ -53,23 +52,16 @@ def backup_sql():
     Creates .sql.bz2 file in backup_dir
     """
     print("\n" + " Mysql dump... ".center(80, '-'))
-    with open(db_name) as databases_list_file:
-        file_length = len(databases_list_file.readlines())
-
-    counter = 1
 
     with open(db_name) as databases_list_file:
-        while counter <= file_length:
-            dbname = databases_list_file.readline()
-            db = dbname.rstrip() # deletes white space or new line character at the end of line
+        db_list = databases_list_file.readlines()
+        for db in db_list:
+            db = db.rstrip()  # deletes white space or new line character at the end of line
             os.chdir(backup_dir)
             dump_name = db + "-" + datetime.datetime.now().strftime("%Y-%m-%d") + ".sql"
             subprocess.call(shlex.split('mysqldump --databases {} --result-file={}'.format(db, dump_name)))
             subprocess.call(shlex.split('bzip2 -f %s' % dump_name))
-            dump_name = dump_name + ".bz2"
-            shutil.move(os.path.join(backup_dir, dump_name), os.path.join(backup_dir, dump_name))
             print("\nBackup File created: {}".format(backup_dir + "/" + dump_name))
-            counter = counter + 1
 
 
 def backup_folder():
@@ -78,21 +70,15 @@ def backup_folder():
     Creates tar.bz2 file in backup_dir
     """
     print("\n" + " Back up of folders... ".center(80, '-'))
-    with open(folder_name) as directory_list_file:
-        file_length = len(directory_list_file.readlines())
-
-    counter = 1
 
     with open(folder_name) as directory_list_file:
-        while counter <= file_length:
-            foldername = directory_list_file.readline()
-            folder = foldername.rstrip('\n') # deletes white space or new line character at the end of line
-            os.chdir(folder)
+        folder_list = directory_list_file.readlines()
+        for folder in folder_list:
+            folder = folder.rstrip('\n')  # deletes white space or new line character at the end of line
+            os.chdir(backup_dir)
             tar_name = os.path.basename(folder) + "-" + datetime.datetime.now().strftime("%Y-%m-%d") + ".tar.bz2"
             make_tarfile(tar_name, folder)
-            shutil.move(os.path.join(folder, tar_name), os.path.join(backup_dir, tar_name))
             print("\nBackup File created: {}".format(backup_dir + "/" + tar_name))
-            counter = counter + 1
 
 
 os.system("clear")

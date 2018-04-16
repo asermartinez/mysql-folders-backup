@@ -4,6 +4,8 @@
 ##### Version 1.0
 ##### 04-2018
 
+:floppy_disk:
+ 
  Python script to backup multiple mysql databases and folders.
  to use with my drupal / wordpress sites
 

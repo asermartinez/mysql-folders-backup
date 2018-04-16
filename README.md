@@ -10,35 +10,33 @@
  Tested with Python 3.6.3
 
 ##### Requirements: 
- Glob2 => pip3 install glob2
+ `pip3 install glob2`
 
-######(Optional) To upload the files to Dropbox:
- 
- install dropbox_uploader.sh from:
+#####(Optional) To upload the files to Dropbox:
 
- https://github.com/andreafabrizi/Dropbox-Uploader
+Install [dropbox_uploader.sh](https://github.com/andreafabrizi/Dropbox-Uploader)
 
 ##### Configure
 
- Create dbname.txt with a database name per line
+* Create dbname.txt with a database name per line
 
- Create foldername.txt with a folder per line
+* Create foldername.txt with a folder per line
 
- Set the path variables db_name and folder_name
+* Set the path variables db_name and folder_name
+ 
+* Set path variable backup_dir
 
  To avoid passing mysql password to the script, save it in a file in your home folder:
 
- ~/.my.cnf
+* Create file 
+        
+        ~/.my.cnf
 
- [mysqldump]
+* Insert:
+    
+        [mysqldump]
 
- user=user
+        user=user
 
- password=pass
+        password=pass
 
-##### Scripts for reference:
-
- bash 
- https://tecadmin.net/python-script-for-mysql-database-backup/
-
- python http://www.guyrutenberg.com/2010/02/28/improved-ftp-backup-for-wordpress/

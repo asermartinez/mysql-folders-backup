@@ -15,8 +15,9 @@ import glob2
 
 # *** CONFIGURE ***
 backup_dir = "/home/aser/www/backups"  # Set the destination for backups.
-db_name = "/home/aser/dbname.txt"  # File with databases names, one per line.
-folder_name = "/home/aser/foldername.txt"  # File with folders to backup, one per line.
+db_name = "/home/aser/dbname.txt"  # Set Full Path to File with databases names, one per line.
+folder_name = "/home/aser/foldername.txt"  # Set Full Path to File with folders to backup, one per line.
+upload = "yes" # Set to "no" if you do not want to upload to dropbox.
 # *** END ***
 
 message_start = " Starting ".center(80, "=")
@@ -76,15 +77,20 @@ if os.path.exists(db_name) and os.path.exists(folder_name):
     print("..." + db_name + "...")
     print("..." + folder_name + "...")
     print("\n" + message_start)
+    print("\n")
+    subprocess.call("date")
     backup_sql()
     backup_folder()
     os.chdir(backup_dir)
     files = glob2.glob("*-{}".format(datetime.datetime.now().strftime("%Y-%m-%d") + "*.bz2"))
-    try:
-        for file in files:
-            subprocess.call(shlex.split("dropbox_uploader.sh upload {} /".format(file)))
-    except FileNotFoundError:
-        print("\n\ndropbox_uploader.sh not found.".center(20, "*"))
+    if upload == "yes":
+        try:
+            for file in files:
+                subprocess.call(shlex.split("dropbox_uploader.sh upload {} /".format(file)))
+        except FileNotFoundError:
+            print("\n\ndropbox_uploader.sh not found.".center(20, "*"))
+    print("\n")
+    subprocess.call("date")
     print("\n" + message_end)
 else:
     print("\n" + message_start + "\n")

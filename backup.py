@@ -6,12 +6,12 @@
 
 # See README.md for details
 
+import datetime
+import glob2
 import os
 import shlex
 import subprocess
-import datetime
 import tarfile
-import glob2
 
 # *** CONFIGURE ***
 backup_dir = "/home/aser/www/backups"  # Set the destination for backups.
